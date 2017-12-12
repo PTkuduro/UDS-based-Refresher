@@ -171,20 +171,15 @@ int main()
 	Send_Service_Session_ctrl(0x03);
 	if(Send_Receive())
 		printf("Session 03 Success!\n");
-	Send_Flag=0;
-	Read_Flag=0;
 
 	Send_Service_Communication_ctrl(0x03,0x01);
 	if(Send_Receive())
 		printf("Communication Success!\n");
-	Send_Flag=0;
-	Read_Flag=0;
 
 	Send_Service_DTC_ctrl(0x02);
 	if(Send_Receive())
 		printf("DTC Success!\n");
-	Send_Flag=0;
-	Read_Flag=0;
+
 	
 /*Pre Programming*/
 
@@ -192,45 +187,38 @@ int main()
 	Send_Service_Session_ctrl(0x02);
 	if(Send_Receive())
 		printf("Session 02 Success!\n");
-	Send_Flag=0;
-	Read_Flag=0;
+
 
 	
 	Send_Service_Security_access(0x05);
 	if(Send_Receive())
 			printf("Security Access!\n");
-	Send_Flag=0;
-	Read_Flag=0;
+
 	
 	Send_Service_Read_fprint(0XAF,0XFC);
 	if(Send_Receive())
 		printf("Read print! the flash times is %d\n",pf_Receive->data[5]);
-	Send_Flag=0;
-	Read_Flag=0;
+
 
 	
 	Send_Service_Routine_ctrl(0x01,0xDF,0xFF);
 	if(Send_Receive())
 		printf("Checking Integrity Succeed!,the state is %d\n",pf_Receive->data[5]);
-	Send_Flag=0;
-	Read_Flag=0;
+
 
 	Send_State=1;
 	Frame_Number=1;
 	Send_Service_Erase_ctrl(GLOBAL_ADDRESS, GLOBAL_DATA_BYTE_ALL);
 	if(Send_Receive())
 		printf("Erase succeed!\n");
-	Send_Flag=0;
-	Read_Flag=0;
+
 
 	
 	Send_Service_Data_req(GLOBAL_ADDRESS,GLOBAL_DATA_BYTE_ALL);
 
 	if(Send_Receive())
 		printf("Data-req succeed!\n");
-	Send_Flag=0;
-	Read_Flag=0;
-
+	
 	MAX_BLOCK_LENTH |= pf_Receive->data[3];
 	MAX_BLOCK_LENTH = MAX_BLOCK_LENTH << 8;
 	MAX_BLOCK_LENTH |= pf_Receive->data[4];
@@ -244,20 +232,15 @@ int main()
 		GLOBAL_BLOCK_COUNT = (GLOBAL_DATA_BYTE_ALL / MAX_BLOCK_DATA_LENTH);
 	int Download_Times = 0;
 	while (Download_Times < GLOBAL_BLOCK_COUNT)
-	{	Send_State = 1;//To receive CF
+	{	
 		Send_Service_Data_send_s19(Download_Times + 1, pd, MAX_BLOCK_DATA_LENTH);
-		Send_State = 0;
-		if (Send_Receive())
-			printf("Data succeed!\n");
 		Download_Times++;
 	}
 	uint32_t REMAIN_BLOCK_DATA_LENTH = (GLOBAL_DATA_BYTE_ALL - MAX_BLOCK_DATA_LENTH* Download_Times);
 	if (Download_Times == GLOBAL_BLOCK_COUNT)
-	{	Send_State = 1;	
+	{	
 		Send_Service_Data_send_s19(Download_Times + 1, pd, REMAIN_BLOCK_DATA_LENTH);
 		Send_State = 0;
-		if (Send_Receive())
-			printf("Data succeed!\n");
 	}
 
 
@@ -270,8 +253,7 @@ int main()
 	Send_Service_Data_exit(0x00);
 	if(Send_Receive())
 		printf("Download succeed!");
-	Send_Flag=0;
-	Read_Flag=0;
+
 
 /*Programming*/
 
@@ -279,28 +261,23 @@ int main()
 	Send_Service_Routine_ctrl(0x01,0xDF,0xFF);
 	if(Send_Receive())
 		printf("Checking Integrity Succeed!,the state is %d\n",pf_Receive->data[5]);
-	Send_Flag=0;
-	Read_Flag=0;
+
 
 	
 	Send_Service_Routine_ctrl(0x01,0xFF,0x01);
 	if(Send_Receive())
 		printf("Checking Dependencies Succeed!,the state is %d\n",pf_Receive->data[5]);
-	Send_Flag=0;
-	Read_Flag=0;
+
 
 	
 	Send_Service_Reset_ctrl(0x01);
 	if(Send_Receive())
 		printf("Reset once");
-	Send_Flag=0;
-	Read_Flag=0;
+
 	
 	Send_Service_Session_ctrl(0x01);
 	if(Send_Receive())
 		printf("Finished!");
-	Send_Flag=0;
-	Read_Flag=0;
 
 	
     close(s);

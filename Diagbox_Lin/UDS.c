@@ -144,7 +144,11 @@ void Send_Service_Erase_ctrl(uint32_t address, uint32_t size)
 
 void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BLOCK_DATA_LENTH)
 
-{	extern uint8_t Frame_Number;
+{	extern int Send_State;
+	extern int Receive_State; 
+	Send_State = 0;//Send SF
+	Receive_State = 1;//Rece FC
+	extern uint8_t Frame_Number;
 	int CF_Loops = 0;
 	if (((BLOCK_DATA_LENTH - 4) % 56 == 0))
 		CF_Loops = ((BLOCK_DATA_LENTH - 4) / 56) - 1;
@@ -152,6 +156,7 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 		CF_Loops = ((BLOCK_DATA_LENTH - 4) / 56);
 	extern struct can_frame* pf_SF;
 	extern struct can_frame* pf_Receive;
+	memset(pf_SF, 0, sizeof(struct can_frame));
 	Frame_Init_FF(pf_SF, MAX_BLOCK_LENTH);
 	pf_SF->data[2] = UDS_TRANS_DATA_CODE;
 	pf_SF->data[3] = Counter;
@@ -159,7 +164,9 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 	{
 		pf_SF->data[i] = pd[GLOBAL_DATA_COUNT++];
 	}
+	Send_Receive();
 	int i = 0;
+	Send_State = 1;//Send CF
 	Frame_Number=8;
 	GLOBAL_SN = 0x21;
 	while (i < CF_Loops)
@@ -174,8 +181,6 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 			}
 		}
 		Send_Receive();
-		Send_Flag=0;
-		Read_Flag=0;
 		i++;
 		free(pf_CF);
 
@@ -184,11 +189,11 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 	int Remain_Frame = 0;
 	if (i == CF_Loops)
 	{
-
+		Receive_State = 0;//Rece SF
 		if (((BLOCK_DATA_LENTH - i * 56 - 4) % 7) == 0)
 		{
 			Remain_Frame = ((BLOCK_DATA_LENTH - i * 56 - 4) / 7);
-			Frame_Number=Remain_Frame;
+			Frame_Number=Remain_Frame;//Change the Frame
 			pf_CF = calloc(Remain_Frame, sizeof(struct can_frame));
 			Frame_Init_CF(pf_CF, Remain_Frame);
 			for (int Frame_count = 0; Frame_count < Remain_Frame; Frame_count++)
@@ -203,8 +208,6 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 					break;
 			}
 			Send_Receive();
-			Send_Flag=0;
-			Read_Flag=0;
 			free(pf_CF);
 		}
 		else
@@ -238,8 +241,6 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 				}
 			}
 			Send_Receive();
-			Send_Flag=0;
-			Read_Flag=0;
 			free(pf_CF);
 		}
 
@@ -298,6 +299,8 @@ int Send_Receive(){
 			break;
 	}
 	rece_parse=Parse_Rsp_Frame(pf_Receive);
+	Send_Flag = 0;
+	Read_Flag = 0;
 	return rece_parse;
 }
 
