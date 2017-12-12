@@ -45,6 +45,9 @@
     <ClCompile Include="UDS.c">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="SA_algorithm.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hex_FileRead.h">

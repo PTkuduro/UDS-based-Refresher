@@ -59,6 +59,7 @@
     <ClCompile Include="Hex_FileRead.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="s19_FileRead.c" />
+    <ClCompile Include="SA_algorithm.c" />
     <ClCompile Include="socket_can.c" />
     <ClCompile Include="UDS.c" />
   </ItemGroup>
