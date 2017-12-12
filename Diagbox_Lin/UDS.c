@@ -1,6 +1,5 @@
 #include "UDS.h"
-#include "SA_algorithm.h"
-#include <pthread.h>
+
 
 extern struct can_frame* pf_SF;
 extern struct can_frame* pf_Receive;

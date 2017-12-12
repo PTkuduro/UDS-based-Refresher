@@ -2,6 +2,8 @@
 #define UDS_H_
 #include "socket_can.h"
 #include <stdio.h>
+#include "SA_algorithm.h"
+#include <pthread.h>
 /*SERVICE CODE*/
 #define UDS_SESSION_CTRL_CODE 0x10
 #define UDS_SECRUTIRY_ACCESS_CODE 0X27
