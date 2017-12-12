@@ -1,7 +1,9 @@
-#include <linux/can.h>
-#include <linux/can/raw.h>
+
 #ifndef SA_ALGORITH_H_
 #define SA_ALGORITH_H_
+#include <stdint.h>
+#include <linux/can.h>
+#include <linux/can/raw.h>
 
 
 
