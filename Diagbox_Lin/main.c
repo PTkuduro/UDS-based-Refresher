@@ -15,6 +15,7 @@
 #include "socket_can.h"
 #include "UDS.h"
 #include <pthread.h>
+#pragma comment(lib, "pthreadVC2.lib")
 #include <sys/time.h>
 #include "timer.h"
 
