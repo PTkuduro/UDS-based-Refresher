@@ -235,30 +235,30 @@ int main()
 	MAX_BLOCK_LENTH = MAX_BLOCK_LENTH << 8;
 	MAX_BLOCK_LENTH |= pf_Receive->data[4];
 	MAX_BLOCK_DATA_LENTH = MAX_BLOCK_LENTH - 2;
+
 	
 
-
-
-
-
-
-	/*if (GLOBAL_DATA_BYTE_ALL % MAX_BLOCK_DATA_LENTH == 0)
+	if (GLOBAL_DATA_BYTE_ALL % MAX_BLOCK_DATA_LENTH == 0)
 		GLOBAL_BLOCK_COUNT = (GLOBAL_DATA_BYTE_ALL /MAX_BLOCK_DATA_LENTH) - 1;
 	else
 		GLOBAL_BLOCK_COUNT = (GLOBAL_DATA_BYTE_ALL / MAX_BLOCK_DATA_LENTH);
-	int download_times = 0;
-	while (download_times < GLOBAL_BLOCK_COUNT)
-	{
-		Send_Service_Data_send_s19(download_times + 1, pd, MAX_BLOCK_DATA_LENTH);
-		do{read(s, pf_Receive, sizeof(*pf_Receive)); } while (pf_Receive->data[1] != 0x76);
-		download_times++;
+	int Download_Times = 0;
+	while (Download_Times < GLOBAL_BLOCK_COUNT)
+	{	Send_State = 1;//To receive CF
+		Send_Service_Data_send_s19(Download_Times + 1, pd, MAX_BLOCK_DATA_LENTH);
+		Send_State = 0;
+		if (Send_Receive())
+			printf("Data succeed!\n");
+		Download_Times++;
 	}
-	uint32_t REMAIN_BLOCK_DATA_LENTH = (GLOBAL_DATA_BYTE_ALL - MAX_BLOCK_DATA_LENTH*download_times);
-	if (download_times == GLOBAL_BLOCK_COUNT)
-	{
-		Send_Service_Data_send_s19(download_times + 1, pd, REMAIN_BLOCK_DATA_LENTH);
-		do{read(s, pf_Receive, sizeof(*pf_Receive)); } while (pf_Receive->data[1] != 0x76);
-	}*/
+	uint32_t REMAIN_BLOCK_DATA_LENTH = (GLOBAL_DATA_BYTE_ALL - MAX_BLOCK_DATA_LENTH* Download_Times);
+	if (Download_Times == GLOBAL_BLOCK_COUNT)
+	{	Send_State = 1;	
+		Send_Service_Data_send_s19(Download_Times + 1, pd, REMAIN_BLOCK_DATA_LENTH);
+		Send_State = 0;
+		if (Send_Receive())
+			printf("Data succeed!\n");
+	}
 
 
 

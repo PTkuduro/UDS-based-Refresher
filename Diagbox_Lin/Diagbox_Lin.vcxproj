@@ -66,6 +66,7 @@
   <ItemGroup>
     <ClInclude Include="Hex_FileRead.h" />
     <ClInclude Include="s19_FileRead.h" />
+    <ClInclude Include="SA_algorithm.h" />
     <ClInclude Include="socket_can.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="UDS.h" />
