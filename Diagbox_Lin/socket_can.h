@@ -52,7 +52,6 @@ int  indi_FC(struct can_frame* pf, char service);
 
 int req_SF(struct can_frame* pf);
 int req_CF(struct can_frame* pf);
-int req_FF(struct can_frame* pf);
 
 
 #endif

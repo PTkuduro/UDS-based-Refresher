@@ -15,7 +15,6 @@
 #include "socket_can.h"
 #include "UDS.h"
 #include <pthread.h>
-#pragma comment(lib, "pthreadVC2.lib")
 #include <sys/time.h>
 #include "timer.h"
 
@@ -252,7 +251,7 @@ int main()
 	Frame_Number=0;
 	Send_Service_Data_exit(0x00);
 	if(Send_Receive())
-		printf("Download succeed!");
+		printf("Download succeed!\n");
 
 
 /*Programming*/

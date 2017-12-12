@@ -26,7 +26,7 @@ void Frame_Init_CF(struct can_frame* Frame,int Frame_Count){
 		Frame[i].can_dlc = 8;
 		GLOBAL_SN++;
 		if (GLOBAL_SN > 0x2F)
-			GLOBAL_SN=0x21;
+			GLOBAL_SN=0x20;
 	}
 }
 int Filter(unsigned int ID, int s)
@@ -75,7 +75,7 @@ int indi_SF(struct can_frame* pf, char service)
 int req_SF(struct can_frame* pf)
 {	int byte = 0;
 	byte=write(s, pf, sizeof(*pf));
-	if ((pf->data[0] & 0xF0) == 0x00&&byte>0)
+	if (((pf->data[0] & 0xF0) == 0x00&&byte>0)||((pf->data[0] & 0xF0) == 0x10&&byte>0))
 		return 1;
 	else 
 		return -1;
@@ -89,16 +89,5 @@ int req_CF(struct can_frame* pf)
 	else 
 		return -1;
 }
-int req_FF(struct can_frame* pf)
-{
-	int byte = 0;
-	byte = write(s, pf, sizeof(*pf));
-	if ((pf->data[0] & 0xF0) == 0x10&&byte>0)
-		return 1;
-	else 
-		return -1;
-	
-}
-
 
 

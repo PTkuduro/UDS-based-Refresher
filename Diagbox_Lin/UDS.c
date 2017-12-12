@@ -148,7 +148,6 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 	extern int Receive_State; 
 	Send_State = 0;//Send SF
 	Receive_State = 1;//Rece FC
-	extern uint8_t Frame_Number;
 	int CF_Loops = 0;
 	if (((BLOCK_DATA_LENTH - 4) % 56 == 0))
 		CF_Loops = ((BLOCK_DATA_LENTH - 4) / 56) - 1;
@@ -157,7 +156,7 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 	extern struct can_frame* pf_SF;
 	extern struct can_frame* pf_Receive;
 	memset(pf_SF, 0, sizeof(struct can_frame));
-	Frame_Init_FF(pf_SF, MAX_BLOCK_LENTH);
+	Frame_Init_FF(pf_SF, BLOCK_DATA_LENTH+2);
 	pf_SF->data[2] = UDS_TRANS_DATA_CODE;
 	pf_SF->data[3] = Counter;
 	for (int i = 4; i < 8; i++)
@@ -201,11 +200,7 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 				for (int data_count = 1; data_count < 8; data_count++)
 				{
 					pf_CF[Frame_count].data[data_count] = pd[GLOBAL_DATA_COUNT++];
-					if (GLOBAL_DATA_COUNT >= GLOBAL_DATA_BYTE_ALL)
-						break;
 				}
-				if (GLOBAL_DATA_COUNT >= GLOBAL_DATA_BYTE_ALL)
-					break;
 			}
 			Send_Receive();
 			free(pf_CF);
@@ -219,16 +214,12 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 			Frame_Number=Remain_Frame;
 			pf_CF = calloc(Remain_Frame, sizeof(struct can_frame));
 			Frame_Init_CF(pf_CF, Remain_Frame);
-			while (k < Remain_Frame - 1)
+			while (k < (Remain_Frame - 1))
 			{
 				for (int data_count = 1; data_count < 8; data_count++)
 				{
 					pf_CF[k].data[data_count] = pd[GLOBAL_DATA_COUNT++];
-					if (GLOBAL_DATA_COUNT >= GLOBAL_DATA_BYTE_ALL)
-						break;
 				}
-				if (GLOBAL_DATA_COUNT >= GLOBAL_DATA_BYTE_ALL)
-					break;
 				k++;
 			}
 			if (k == (Remain_Frame - 1))
@@ -236,8 +227,6 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 				for (int j = 1; j < remain_ID; j++)
 				{
 					pf_CF[k].data[j] = pd[GLOBAL_DATA_COUNT++];
-					if (GLOBAL_DATA_COUNT >= GLOBAL_DATA_BYTE_ALL)
-						break;
 				}
 			}
 			Send_Receive();
@@ -264,11 +253,15 @@ int Sending(ISOTP_req Callback, struct can_frame* pf, int frame_number)
 		return state;
 	}
 	else
+	{
 		for (int i = 0; i < frame_number; i++)
-			{
-				state = Callback(pf); 
-				return state;
-			}	
+		{
+			state = Callback(pf);
+			pf++;
+
+		}
+		return state;
+	}
 }
 int Parse_Rsp_Frame(const struct can_frame *rsp_frame)
 {
