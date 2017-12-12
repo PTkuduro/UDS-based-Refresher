@@ -42,9 +42,6 @@
     <ClCompile Include="socket_can.c">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="timer.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="UDS.c">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -57,9 +54,6 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="socket_can.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="timer.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="UDS.h">

@@ -15,8 +15,7 @@
 #include "socket_can.h"
 #include "UDS.h"
 #include <pthread.h>
-#include <sys/time.h>
-#include "timer.h"
+
 
 /*************************ISOTP Thread*******************************/
 pthread_mutex_t Send_Lock;  //Lock 

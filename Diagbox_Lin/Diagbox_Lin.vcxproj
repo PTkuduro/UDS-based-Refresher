@@ -60,7 +60,6 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="s19_FileRead.c" />
     <ClCompile Include="socket_can.c" />
-    <ClCompile Include="timer.c" />
     <ClCompile Include="UDS.c" />
   </ItemGroup>
   <ItemGroup>
@@ -68,7 +67,6 @@
     <ClInclude Include="s19_FileRead.h" />
     <ClInclude Include="SA_algorithm.h" />
     <ClInclude Include="socket_can.h" />
-    <ClInclude Include="timer.h" />
     <ClInclude Include="UDS.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
