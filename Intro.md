@@ -20,5 +20,5 @@
 
 * #### 使用方法
 
-通过DB9接口连接BeagleBone Black与待重编程控制器的CAN接口，通过FTP或SD卡挂载方式将待刷写的.s19或.hex文件、规定下载流程的.xml文件，规定安全访问算法的.so文件拷贝入Beaglebone Black系统中 /usr/Diagbox\_src 目录中，运行diagbox.exe并 按照提示输入，等待下载完成，并查看软件完整性与依赖性检查结果。
+通过DB9接口连接BeagleBone Black与待重编程控制器的CAN接口，通过FTP或SD卡挂载方式将待刷写的.s19或.hex文件、规定下载流程的.xml文件，规定安全访问算法的.so文件拷贝入Beaglebone Black系统中 /usr/Diagbox\_src 目录中，运行diagbox.exe并 按照提示选择刷写模式，等待下载完成，并查看软件完整性与依赖性检查结果。
 
