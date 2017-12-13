@@ -1,7 +1,7 @@
 # Summary
 
 * [介绍](README.md)
-* [前言](Intro.md)
+* [前言与使用方法](Intro.md)
 * [第一部分 硬件介绍与开发环境配置](Part1/Part1.md)
   * [1.0 BBB的硬件规格](Part1/1.0BBB_Hardware.md)
   * [1.1 外围扩展板CAN CAPE与LCD CAPE](Part1/1.1CAPE_Hardware.md)
