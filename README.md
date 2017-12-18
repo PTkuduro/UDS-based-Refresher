@@ -21,7 +21,6 @@
   * ##### [2.0 运行在BBB上的Linux](/Part1/2.0BBB_Linux.md)
   * ##### [2.1 使能BBB的CAN总线](/Part1/2.1BBB_CAN.md)
   * ##### [2.2 虚拟机上交叉环境配置（Ubuntu16.04）](/Part1/2.2Cross_Compiler.md)
-  * ##### [2.3 Hello World测试](#23-hello-world测试)
 
 #### 第二部分 软件详细设计
 
