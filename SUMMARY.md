@@ -8,13 +8,13 @@
   * [2.0 运行在BBB上的Linux](//Part1/2.0BBB_Linux.md)
   * [2.1 使能BBB的CAN总线](Part1/2.1BBB_CAN.md)
   * [2.2 虚拟机上交叉编译环境配置（Ubuntu16.04）](Part1/2.2Cross_Compiler.md)
-* [第二部分 软件设计思路](///Part2/Part2.md)
-  * [3.0SocketCAN介绍](///Part2/1.0Socketcan.md)
-  * [3.1Linux并发编程实现](///Part2/1.1pthread.md)
-  * [3.2 动态链接库介绍](//Part2/1.2so.md)
-  * [4.0 ISO15765](//Part2/2.015765.md)
-  * [4.1 ISO14229](//Part2/2.114229.md)
-  * [4.2 标定文件下载测试](//Part2/2.2download.md)
+* [第二部分 软件设计思路](////Part2/Part2.md)
+  * [3.0SocketCAN介绍](////Part2/1.0Socketcan.md)
+  * [3.1Linux并发编程实现](////Part2/1.1pthread.md)
+  * [3.2 动态链接库介绍](///Part2/1.2so.md)
+  * [4.0 ISO15765](///Part2/2.015765.md)
+  * [4.1 ISO14229](///Part2/2.114229.md)
+  * [4.2 标定文件下载测试](///Part2/2.2download.md)
 
 
 
