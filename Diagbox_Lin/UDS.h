@@ -51,5 +51,9 @@ int Parse_Rsp_Frame(const struct can_frame *rsp_frame);
 int Receiving(ISOTP_indi Callback, struct can_frame* pf_receive, char service);
 int Sending(ISOTP_req Callback, struct can_frame* pf,int frame_number);
 int Send_Receive();
+enum Flow_State
+{
+	
+};
 
 #endif

@@ -43,7 +43,18 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CLanguageStandard>GNU99</CLanguageStandard>
+      <AdditionalIncludeDirectories>/usr/include/libxml2;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CPPLanguageStandard />
     </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ClCompile>
@@ -61,6 +72,7 @@
     <ClCompile Include="s19_FileRead.c" />
     <ClCompile Include="socket_can.c" />
     <ClCompile Include="UDS.c" />
+    <ClCompile Include="XML_Read.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hex_FileRead.h" />
@@ -68,6 +80,7 @@
     <ClInclude Include="SA_algorithm.h" />
     <ClInclude Include="socket_can.h" />
     <ClInclude Include="UDS.h" />
+    <ClInclude Include="XML_Read.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

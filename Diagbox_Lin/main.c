@@ -92,7 +92,7 @@ void *ISOTP_Rece(void)
 /*************************ISOTP Thread*******************************/
 
 
-int main()
+int main(int argc,char *argv[])
 {
 	
 /*Read Hex File, configure data_byte and data_list*/
@@ -104,9 +104,11 @@ int main()
 	struct List_hex* PtrL_hex;
 	struct List_s19* PtrL_s19;
 	struct List_s19* tmp;
+	char *filename;
+	filename = argv[1];
 	if(ch==0)
 	{
-		fp=fopen("project.hex","r");
+		fp = fopen(filename, "r");
 		PtrL_hex=Hex_FileRead(fp);
 		GLOBAL_DATA_BYTE_ALL=hex_data_byte(PtrL_hex);
 	}
