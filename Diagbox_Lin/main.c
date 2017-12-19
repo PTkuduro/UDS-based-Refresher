@@ -19,6 +19,7 @@
 
 /*************************ISOTP Thread*******************************/
 pthread_mutex_t Send_Lock;  //Lock 
+
 pthread_mutex_t Read_Lock;   //Lock 
 pthread_cond_t Is_Req_Send;  //Conditional Variables
 pthread_cond_t Is_Req_Read; 
@@ -114,7 +115,7 @@ int main(int argc,char *argv[])
 	}
 	else if (ch==1)
 	{
-		fp=fopen("project.s19","r");
+		fp=fopen(filename,"r");
 		PtrL_s19=S19_FileRead(fp);
 		tmp=PtrL_s19;
 		tmp=tmp->next;
