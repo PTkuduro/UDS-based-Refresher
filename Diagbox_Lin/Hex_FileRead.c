@@ -46,15 +46,6 @@ struct List_hex* Hex_FileRead(FILE* fp){
 	return PtrL;
 }
 
-/*BEGIN_FUNCTION_HDR*
-**************************************************************************
-*Function Name:Hex_FileRead
-*Description:Store the data of .hex in a list, dropped out the CRC
-*Inputs:File name
-*Outputs:Success of Failed and a list of data
-*Limitations
-**************************************************************************
-END_FUNCTION_HDR*/
 struct List_hex* Format_Trans_hex(const char *hex_data)
 {	
 	int data_length=strlen(hex_data),data_index = 0;
