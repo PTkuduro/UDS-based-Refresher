@@ -13,24 +13,9 @@
       <UniqueIdentifier>{9e3483ce-43be-4d06-901d-59da2f329b27}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="VisualGDB settings">
-      <UniqueIdentifier>{01a97cc2-acb9-4dd6-a068-46850ebb738f}</UniqueIdentifier>
-      <Extensions>vgdbsettings</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Diagbox_Lin-Debug.vgdbsettings">
-      <Filter>VisualGDB settings</Filter>
-    </None>
-    <None Include="Diagbox_Lin-Release.vgdbsettings">
-      <Filter>VisualGDB settings</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="global.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Hex_FileRead.c">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="main.c">
@@ -45,11 +30,14 @@
     <ClCompile Include="UDS.c">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Get_Func_Pointer.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="XML_Read.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Hex_FileRead.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="s19_FileRead.h">
       <Filter>Header files</Filter>
     </ClInclude>
@@ -60,6 +48,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="SA_algorithm.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="XML_Read.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

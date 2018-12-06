@@ -5,9 +5,17 @@
       <Configuration>Debug</Configuration>
       <Platform>VisualGDB</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|VisualGDB">
       <Configuration>Release</Configuration>
       <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -22,6 +30,12 @@
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <GNUToolchainPrefix />
     <GNUCompilerType>GCC</GNUCompilerType>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -62,23 +76,20 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="Diagbox_Lin-Debug.vgdbsettings" />
-    <None Include="Diagbox_Lin-Release.vgdbsettings" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClCompile Include="Get_Func_Pointer.c" />
     <ClCompile Include="global.c" />
-    <ClCompile Include="Hex_FileRead.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="s19_FileRead.c" />
     <ClCompile Include="socket_can.c" />
     <ClCompile Include="UDS.c" />
+    <ClCompile Include="XML_Read.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Hex_FileRead.h" />
     <ClInclude Include="s19_FileRead.h" />
     <ClInclude Include="SA_algorithm.h" />
     <ClInclude Include="socket_can.h" />
     <ClInclude Include="UDS.h" />
+    <ClInclude Include="XML_Read.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

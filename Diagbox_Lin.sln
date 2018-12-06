@@ -1,22 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Diagbox_Lin", "Diagbox_Lin\Diagbox_Lin.vcxproj", "{19AB9DBA-397D-4919-9705-5339E1332293}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|VisualGDB = Debug|VisualGDB
-		Release|VisualGDB = Release|VisualGDB
+		Debug|Win32 = Debug|Win32
+		Debug|x86 = Debug|x86
+		Release|Win32 = Release|Win32
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{19AB9DBA-397D-4919-9705-5339E1332293}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{19AB9DBA-397D-4919-9705-5339E1332293}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
-		{19AB9DBA-397D-4919-9705-5339E1332293}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
-		{19AB9DBA-397D-4919-9705-5339E1332293}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{19AB9DBA-397D-4919-9705-5339E1332293}.Debug|Win32.ActiveCfg = Debug|Win32
+		{19AB9DBA-397D-4919-9705-5339E1332293}.Debug|Win32.Build.0 = Debug|Win32
+		{19AB9DBA-397D-4919-9705-5339E1332293}.Debug|x86.ActiveCfg = Debug|Win32
+		{19AB9DBA-397D-4919-9705-5339E1332293}.Debug|x86.Build.0 = Debug|Win32
+		{19AB9DBA-397D-4919-9705-5339E1332293}.Release|Win32.ActiveCfg = Release|Win32
+		{19AB9DBA-397D-4919-9705-5339E1332293}.Release|Win32.Build.0 = Release|Win32
+		{19AB9DBA-397D-4919-9705-5339E1332293}.Release|x86.ActiveCfg = Release|Win32
+		{19AB9DBA-397D-4919-9705-5339E1332293}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BB11456-1DA9-41EB-95E0-8900F84B2ED7}
 	EndGlobalSection
 EndGlobal
