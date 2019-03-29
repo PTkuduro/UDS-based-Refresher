@@ -1,10 +1,9 @@
 #ifndef __S19_FILEREAD__H__
 #define __S19_FILEREAD__H__
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 #include <stdint.h>
-#include <string.h>
 #define S19_LENGTH 32
 struct  List_s19
 {
@@ -19,4 +18,4 @@ struct List_s19* S19_FileRead(FILE* fp);
 struct List_s19* Format_Trans_s19(const char *s19_data);
 int s19_data_byte(struct List_s19* PtrL);
 
-#endif
+#endif

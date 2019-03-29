@@ -1,6 +1,6 @@
 #include "UDS.h"
-
-
+#include <memory.h>
+#include "SA_algorithm.h"
 extern struct can_frame* pf_SF;
 extern struct can_frame* pf_Receive;
 extern struct can_frame* pf_CF;
@@ -192,7 +192,7 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 		{
 			Remain_Frame = ((BLOCK_DATA_LENTH - i * 56 - 4) / 7);
 			Frame_Number=Remain_Frame;//Change the Frame
-			pf_CF = calloc(Remain_Frame, sizeof(struct can_frame));
+			pf_CF = (struct can_frame*)calloc(Remain_Frame, sizeof(struct can_frame));
 			Frame_Init_CF(pf_CF, Remain_Frame);
 			for (int Frame_count = 0; Frame_count < Remain_Frame; Frame_count++)
 			{
@@ -211,7 +211,7 @@ void Send_Service_Data_send_s19(uint32_t Counter, const uint8_t* pd, uint32_t BL
 			int k = 0;
 			Remain_Frame = ((BLOCK_DATA_LENTH - i * 56 - 4) / 7) + 1;
 			Frame_Number=Remain_Frame;
-			pf_CF = calloc(Remain_Frame, sizeof(struct can_frame));
+			pf_CF = (struct can_frame*)calloc(Remain_Frame, sizeof(struct can_frame));
 			Frame_Init_CF(pf_CF, Remain_Frame);
 			while (k < (Remain_Frame - 1))
 			{

@@ -7,27 +7,26 @@
 
 #ifndef SOCKET_CAN_H_
 #define SOCKET_CAN_H_
-#include <stdlib.h>
+#include <linux/can.h>
+#include <linux/can/raw.h>
+
+#include <cstdlib>
 #include <unistd.h>
-#include <stdint.h>
+#include <cstdint>
 #include <errno.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <net/if.h>
-#include <linux/can.h>
-#include <linux/can/raw.h>
-#include <stdio.h>
-#include <string.h>
 
 #define BS 8
 #define FF_ID 0x74A
 #define FC_ID 0X7CA
 
-int s;  //Socket
-struct sockaddr_can addr;
-struct ifreq ifr;
+static int s; //Socket
+static struct sockaddr_can addr;
+static struct ifreq ifr;
 extern uint8_t GLOBAL_SN;
 
 
@@ -36,6 +35,7 @@ extern uint8_t GLOBAL_SN;
 typedef int(*ISOTP_indi)(struct can_frame* pf, char service);
 /*Confirm state for Success and Failed*/
 typedef int(*ISOTP_req)(struct can_frame* pf);
+
 
 
 

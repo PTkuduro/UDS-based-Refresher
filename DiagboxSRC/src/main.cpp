@@ -1,22 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdint.h>
-#include <errno.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <sys/socket.h>
-#include <sys/ioctl.h>
-#include <net/if.h>
-#include <linux/can.h>
-#include <linux/can/raw.h>
-#include "Hex_FileRead.h"
 #include "s19_FileRead.h"
 #include "socket_can.h"
 #include "UDS.h"
 #include <pthread.h>
-
-
+#include "SA_algorithm.h"
 /*************************ISOTP Thread*******************************/
 pthread_mutex_t Send_Lock;  //Lock 
 
@@ -90,9 +76,6 @@ void *ISOTP_Rece(void)
 		
 	}
 }
-/*************************ISOTP Thread*******************************/
-
-
 int main(int argc,char *argv[])
 {
 	
@@ -109,9 +92,6 @@ int main(int argc,char *argv[])
 	filename = argv[1];
 	if(ch==0)
 	{
-		fp = fopen(filename, "r");
-		PtrL_hex=Hex_FileRead(fp);
-		GLOBAL_DATA_BYTE_ALL=hex_data_byte(PtrL_hex);
 	}
 	else if (ch==1)
 	{
@@ -123,7 +103,7 @@ int main(int argc,char *argv[])
 		GLOBAL_DATA_BYTE_ALL=s19_data_byte(PtrL_s19);
 	}
 	fclose(fp);
-	uint8_t* pd=calloc(GLOBAL_DATA_BYTE_ALL,sizeof(uint8_t));
+	uint8_t *pd = (uint8_t*) calloc(GLOBAL_DATA_BYTE_ALL, sizeof(uint8_t));
 	int k = 0;
 	while (tmp->next != NULL)
 	{

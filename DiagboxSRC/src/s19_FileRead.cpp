@@ -1,16 +1,6 @@
 
 #include "s19_FileRead.h"
-
-/*Define Functions*/
-/*BEGIN_FUNCTION_HDR*
-**************************************************************************
-*Function Name:data_byte
-*Description:Count data_byte in the Hex file
-*Inputs:File pointer
-*Outputs:Number of data bytes
-*Limitations
-**************************************************************************
-END_FUNCTION_HDR*/
+#include <cstring>
 int s19_data_byte(struct List_s19* PtrL){
 	static int data_byte = 0;
 	while(PtrL->next != NULL)
@@ -30,7 +20,7 @@ int s19_data_byte(struct List_s19* PtrL){
 **************************************************************************
 END_FUNCTION_HDR*/
 struct List_s19* S19_FileRead(FILE* fp){
-	char *buffer = calloc(100,sizeof(char));
+	char *buffer = (char*)calloc(100, sizeof(char));
 	if (fp == NULL)
 		printf("Open file error.\n");
 	struct List_s19 *PtrL, *tmp;

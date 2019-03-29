@@ -1,5 +1,5 @@
 #include "socket_can.h"
-
+#include <cstring>
 int Socket_Init(int s)
 {
 	s = socket(PF_CAN, SOCK_RAW, CAN_RAW);
